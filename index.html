@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love & Beauty - Tema Cinta</title>
+    <title>Developer Sayang Indah - Tema Cinta</title>
     <style>
         * {
             margin: 0;
@@ -28,6 +28,11 @@
             box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         header::before {
@@ -53,6 +58,7 @@
             position: relative;
             z-index: 1;
             animation: pulse-glow 2s ease-in-out infinite, bounce-text 3s ease-in-out infinite;
+            text-align: center;
         }
 
         @keyframes pulse-glow {
@@ -76,6 +82,8 @@
             position: relative;
             z-index: 1;
             animation: wiggle 2.5s ease-in-out infinite;
+            text-align: center;
+            margin-top: 20px;
         }
 
         @keyframes wiggle {
@@ -86,28 +94,7 @@
 
         /* Navigation */
         nav {
-            background-color: rgba(255, 105, 180, 0.95);
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 20px;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 20, 147, 0.7);
-            transform: scale(1.05);
+            display: none;
         }
 
         /* Main Container */
@@ -400,19 +387,13 @@
                 font-size: 2em;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
+            .tagline {
+                font-size: 1.1em;
             }
 
-            nav a {
-                margin: 5px 10px;
-                font-size: 0.9em;
-                padding: 6px 12px;
-            }
-
-            section {
-                padding: 20px;
-                margin-bottom: 30px;
+            header {
+                min-height: 100vh;
+                padding: 40px 20px;
             }
 
             section h2 {
@@ -540,6 +521,7 @@
             }
 
             header {
+                min-height: 100vh;
                 padding: 30px 15px;
             }
 
@@ -706,6 +688,252 @@
         .shape2 { top: 60%; right: 10%; font-size: 80px; animation: float 7s ease-in-out infinite reverse; }
         .shape3 { bottom: 10%; left: 50%; font-size: 120px; animation: float 8s ease-in-out infinite; }
 
+        /* Welcome Modal Styles */
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fade-in-modal 0.5s ease-out;
+        }
+
+        @keyframes fade-in-modal {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: transparent;
+            padding: 60px 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: none;
+            max-width: 600px;
+            width: 90%;
+            animation: slide-up 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content h2 {
+            color: white;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: bounce-text 3s ease-in-out infinite;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content p {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-input-group {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            animation: slide-in-left 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: 3px solid white;
+            border-radius: 25px;
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 250px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: white;
+            background: white;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        .modal-btn {
+            padding: 18px 50px;
+            background: white;
+            color: #ff1493;
+            border: 3px solid white;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .modal-btn:active {
+            animation: button-pop 0.4s ease-out;
+        }
+
+        .welcome-message {
+            display: none;
+            color: white;
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            animation: slide-down 0.8s ease-out;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-message span {
+            color: #ffff00;
+            font-size: 1.3em;
+            font-weight: 900;
+        }
+
+        .modal.hidden {
+            display: none;
+        }
+
+        /* Audio Player */
+        .modal-audio {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            animation: slide-up 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.6s;
+            flex-wrap: wrap;
+        }
+
+        .audio-icon {
+            font-size: 3em;
+            cursor: pointer;
+            animation: pulse-audio 1.5s ease-in-out infinite;
+            transition: all 0.3s ease;
+            user-select: none;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .audio-icon:hover {
+            transform: scale(1.15);
+        }
+
+        .audio-icon:active {
+            animation: button-pop 0.4s ease-out;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 3px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .volume-icon {
+            font-size: 1.5em;
+            color: #ff1493;
+        }
+
+        .volume-slider {
+            width: 150px;
+            height: 6px;
+            border-radius: 10px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(90deg, #ff69b4, #ff1493);
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 20, 147, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.7);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 20, 147, 0.5);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .volume-slider::-moz-range-thumb:hover {
+            transform: scale(1.3);
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.7);
+        }
+
+        .volume-value {
+            font-size: 1em;
+            color: #ff1493;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        @keyframes pulse-audio {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        audio {
+            display: none;
+        }
+
         /* Slider Styles */
         .slider-container {
             position: relative;
@@ -858,6 +1086,49 @@
     </style>
 </head>
 <body>
+    <!-- Welcome Modal -->
+    <div class="welcome-modal" id="welcomeModal">
+        <div class="modal-content">
+            <h2>✨ Selamat Datang ✨</h2>
+            <p>Masukkan nama Anda untuk memulai perjalanan indah bersama kami</p>
+            
+            <div class="modal-input-group">
+                <input 
+                    type="text" 
+                    class="modal-input" 
+                    id="nameInput" 
+                    placeholder="Ketik nama Anda..."
+                    onkeypress="handleKeyPress(event)"
+                >
+                <button class="modal-btn" onclick="enterName()">Masuk 💕</button>
+            </div>
+            
+            <div class="welcome-message" id="welcomeMessage">
+                Halo <span id="userName"></span> 👋 Selamat datang di Developer Sayang Indah!
+            </div>
+
+            <div class="modal-audio">
+                <span class="audio-icon" id="audioToggle" onclick="toggleAudio()">🔊</span>
+                <div class="volume-control">
+                    <span class="volume-icon">🔉</span>
+                    <input 
+                        type="range" 
+                        class="volume-slider" 
+                        id="volumeSlider" 
+                        min="0" 
+                        max="100" 
+                        value="70"
+                        oninput="changeVolume()"
+                    >
+                    <span class="volume-value" id="volumeValue">70%</span>
+                </div>
+                <audio id="backgroundMusic" autoplay loop>
+                    <source src="Rizky Febian & Adrian Khalif - Alamak (Lirik)  Mix - Juicy Luicy, Ruang Senja, Nadhif, YOAN - Stell Lirik.mp3" type="audio/mpeg">
+                    Browser Anda tidak mendukung audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
     <!-- Floating Decorations -->
     <div class="floating-shape shape1">❤️</div>
     <div class="floating-shape shape2">💕</div>
@@ -865,8 +1136,8 @@
 
     <!-- Header -->
     <header>
-        <h1>💕 Love & Beauty 💕</h1>
-        <p class="tagline">Koleksi Momen Indah & Penuh Cinta</p>
+        <h1>💕 Developer Sayang Indah 💕</h1>
+        <p class="tagline" id="greetingTagline">Koleksi Momen Indah & Penuh Cinta</p>
     </header>
 
     <!-- Navigation -->
@@ -882,7 +1153,7 @@
     <div class="container">
         <!-- Gallery Section -->
         <section id="gallery">
-            <h2>💗 Galeri Indah Kami</h2>
+            <h2>💗 Galeri Indah aku</h2>
             <div class="gallery">
                 <div class="gallery-item">
                     <img src="indah 1.jpeg" alt="Indah 1">
@@ -1113,7 +1384,7 @@
 
     <!-- Footer -->
     <footer id="contact">
-        <p>&copy; 2025 Love & Beauty - Semua Hak Dilindungi</p>
+        <p>&copy; 2025 Developer Sayang Indah - Semua Hak Dilindungi</p>
         <p>Dibuat dengan ❤️ untuk Anda</p>
         <div class="social-links">
             <a href="#">📱 Instagram</a>
@@ -1123,6 +1394,111 @@
     </footer>
 
     <script>
+        // Audio Control Function
+        let isAudioPlaying = true;
+
+        function toggleAudio() {
+            const audio = document.getElementById('backgroundMusic');
+            const icon = document.getElementById('audioToggle');
+            
+            if (isAudioPlaying) {
+                audio.pause();
+                icon.textContent = '🔇';
+                isAudioPlaying = false;
+            } else {
+                audio.play();
+                icon.textContent = '🔊';
+                isAudioPlaying = true;
+            }
+        }
+
+        function changeVolume() {
+            const volumeSlider = document.getElementById('volumeSlider');
+            const volumeValue = document.getElementById('volumeValue');
+            const audio = document.getElementById('backgroundMusic');
+            
+            const volume = volumeSlider.value;
+            audio.volume = volume / 100;
+            volumeValue.textContent = volume + '%';
+        }
+
+        // Auto play on page load
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('backgroundMusic');
+            const volumeSlider = document.getElementById('volumeSlider');
+            
+            // Set volume ke 70% saat load
+            audio.volume = 0.7;
+            
+            audio.play().catch(function(error) {
+                console.log('Autoplay prevented:', error);
+                console.log('Klik speaker icon untuk memutar musik');
+            });
+        });
+
+        // Welcome Modal Functions
+        function enterName() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            
+            if (name === '') {
+                alert('Mohon masukkan nama Anda terlebih dahulu 😊');
+                nameInput.focus();
+                return;
+            }
+            
+            // Save name to localStorage
+            localStorage.setItem('userName', name);
+            
+            // Update welcome message
+            document.getElementById('userName').textContent = name;
+            document.getElementById('welcomeMessage').style.display = 'block';
+            
+            // Disable input and button
+            nameInput.disabled = true;
+            event.target.disabled = true;
+            
+            // Close modal after 2 seconds
+            setTimeout(() => {
+                closeWelcomeModal(name);
+            }, 2000);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                enterName();
+            }
+        }
+
+        function closeWelcomeModal(name) {
+            const modal = document.getElementById('welcomeModal');
+            modal.style.opacity = '0';
+            modal.style.transition = 'opacity 0.5s ease-out';
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                updateGreeting(name);
+            }, 500);
+        }
+
+        function updateGreeting(name) {
+            const greetingTagline = document.getElementById('greetingTagline');
+            greetingTagline.textContent = `Selamat datang, ${name}! 💕 Nikmati koleksi indah kami`;
+            greetingTagline.style.animation = 'slide-down 0.8s ease-out';
+        }
+
+        // Check if user already visited
+        window.addEventListener('load', function() {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                const modal = document.getElementById('welcomeModal');
+                modal.classList.add('hidden');
+                updateGreeting(savedName);
+            } else {
+                document.getElementById('nameInput').focus();
+            }
+        });
+
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
